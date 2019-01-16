@@ -5,7 +5,7 @@ import detector.TensorObjectDetector as od
 import processor.FrameProcessor as fp
 import publisher.MqttPublisher as p
 
-publisher = p.MqttPublisher("192.168.2.106", 1883, "openhab", "openhab_123")
+publisher = p.MqttPublisher("localhost", 1883, "user", "password")
 #publisher.publish("video/event", "Лучших своих героев Л. Н. Толстой изображает во всей их душевной сложности, в непрерывных поисках истины, в стремлении к самосовершенствованию. Таковы князь Андрей, Пьер, Наташа, Николай, княжна Марья. Отрицательные герои лишены развития, динамики, движений души: Элен, Анатоль.")
 
 weightsPath = "rcnn/frozen_inference_graph.pb"
