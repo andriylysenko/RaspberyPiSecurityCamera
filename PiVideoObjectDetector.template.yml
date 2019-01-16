@@ -1,0 +1,32 @@
+mqtt:
+  host: 1.2.3.4
+  port: 1883
+  user: user
+  password: password
+  publisher:
+    delay: 5
+    threads: 1
+
+mediafire:
+  user: user
+  password: password
+  maxClients: 20
+  publisher:
+    delay: 0.01
+    threads: 30
+
+video:
+  capture: camera #picamera camera
+  picamera:
+    resolution:
+      width: 640
+      height: 480
+    frameset: 32
+    format: bgr
+
+net:
+  config: mobilenet/MobileNetSSD_deploy.prototxt.txt
+  model: mobilenet/MobileNetSSD_deploy.caffemodel
+  labels: mobilenet/object_detection_classes.txt
+
+showVideoStream: true
