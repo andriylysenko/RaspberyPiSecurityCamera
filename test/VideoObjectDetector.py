@@ -24,15 +24,15 @@ def publish(publisher, data):
         time.sleep(1)
 
 
-#weightsPath = "/Users/alysenko5/dev/python/ObjectDetection/rcnn/frozen_inference_graph.pb"
-#configPath = "/Users/alysenko5/dev/python/ObjectDetection/rcnn/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt"
-#labels1Path = "/Users/alysenko5/dev/python/ObjectDetection/rcnn/object_detection_classes_coco.txt"
-#labels2Path = "/Users/alysenko5/dev/python/ObjectDetection/rcnn/object_detection_classes_coco_ru.txt"
+#weightsPath = "rcnn/frozen_inference_graph.pb"
+#configPath = "rcnn/mask_rcnn_inception_v2_coco_2018_01_28.pbtxt"
+#labels1Path = "rcnn/object_detection_classes_coco.txt"
+#labels2Path = "rcnn/object_detection_classes_coco_ru.txt"
 
-weightsPath = "/Users/alysenko5/dev/python/ObjectDetection/mobilenet/MobileNetSSD_deploy.caffemodel"
-configPath = "/Users/alysenko5/dev/python/ObjectDetection/mobilenet/MobileNetSSD_deploy.prototxt.txt"
-labels1Path = "/Users/alysenko5/dev/python/ObjectDetection/mobilenet/object_detection_classes.txt"
-labels2Path = "/Users/alysenko5/dev/python/ObjectDetection/mobilenet/object_detection_classes.txt"
+weightsPath = "mobilenet/MobileNetSSD_deploy.caffemodel"
+configPath = "mobilenet/MobileNetSSD_deploy.prototxt.txt"
+labels1Path = "mobilenet/object_detection_classes.txt"
+labels2Path = "mobilenet/object_detection_classes.txt"
 
 labels = open(labels1Path).read().strip().split("\n")
 labels_ru = open(labels2Path).read().strip().split("\n")
@@ -47,7 +47,7 @@ processor = fp.FrameProcessor(motion_detector, object_detector, labels)
 
 cv2.namedWindow("out_img", cv2.WINDOW_NORMAL)
 
-publisher_worker = publisher.PublisherThread(p.MqttPublisher("192.168.10.102", 1883, "openhab", "openhab_123"),
+publisher_worker = publisher.PublisherThread(p.MqttPublisher("1.2.3.4", 1883, "user", "password"),
                                              data_to_publish, publish, 10)
 publisher_worker.start()
 
