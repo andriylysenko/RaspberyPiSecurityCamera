@@ -1,6 +1,8 @@
 from mediafire.client import (MediaFireClient, File, Folder, ResourceNotFoundError)
+from mediafire.uploader import (UploadError)
 import os
 import Queue
+import logging
 
 
 class MediaFirePublisher:
@@ -18,6 +20,8 @@ class MediaFirePublisher:
             self.__create_path(client, destination)
             destination = "mf:" + destination
             client.upload_file(source, destination)
+        except UploadError as e:
+            logging.info("Upload error: {}".format(e))
         finally:
             self.__pool.put(client)
 
